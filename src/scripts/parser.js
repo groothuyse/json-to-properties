@@ -20,7 +20,9 @@ exports.deflate = function (json, prefix) {
             result = result.concat(exports.deflate(json[ key ], _prefix));
         } else {
             _prefix = prefix ? prefix.concat(key) : key;
-            result.push(_prefix.concat('=').concat(json[ key ] || ''));
+            var value = json[ key ] || '';
+            value = value.replace('\n', '\n\\');
+            result.push(_prefix.concat('=').concat(value));
         }
     });
 
