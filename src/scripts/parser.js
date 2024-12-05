@@ -21,7 +21,7 @@ exports.deflate = function (json, prefix) {
         } else {
             _prefix = prefix ? prefix.concat(key) : key;
             var value = json[ key ] || '';
-            value = value.replace(/\n/g, '\\\n');
+            value = value.replace(/\n/g, '\\n');
             result.push(_prefix.concat('=').concat(value));
         }
     });
